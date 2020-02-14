@@ -28,7 +28,7 @@ def about():
     """Render the website's about page."""
     return render_template('about.html', name="Mary Jane")
 
-@app.route('/contact')
+@app.route('/contact', methods=['GET', 'POST'])
 def contact():
     """Render the created contact page"""
     form = ContactForm()
@@ -38,6 +38,16 @@ def contact():
         'subject': 'Please enter the subject of your message',
         'message': 'Please enter the message you would like to send'
     }
+
+    if form.validate_on_submit():
+        msg = Message(form.subject.data, 
+            sender=(form.name.data, form.email.data),
+            recipients=["info3180-52b188@inbox.mailtrap.io"])
+        msg.body = form.message.data
+        mail.send(msg)
+
+        flash('Email successfully sent', 'success')
+        return redirect(url_for('home'))
     return render_template('contact.html', form=form, messages=messages)
 
 ###

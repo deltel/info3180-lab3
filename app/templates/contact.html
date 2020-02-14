@@ -1,31 +1,33 @@
+{% extends "base.html" %}
+
+{% block main %}
+
 <form action="" method="post">
     <h1>Contact Form</h1>
     <hr>
     <p>Fill in this form to contact the site owners.</p>
     {{ form.csrf_token }}
+    <h6>{{ form.name.label }} <span class="required">(Required)</span> </h6>
     {{ messages['name'] }} 
     <br>
-    {{ form.name.label }} <span class="required">(Required)</span>
-    <br>
-    {{ form.name(size=20) }}
+    {{ form.name(size=40) }}
     <br><br>
+    <h6>{{ form.email.label }} <span class="required">(Required)</span></h6>
     {{ messages['email'] }}
     <br>
-    {{ form.email.label }} <span class="required">(Required)</span>
-    <br>
-    {{ form.email }}
+    {{ form.email(size=40) }}
     <br><br>
+    <h6>{{ form.subject.label }} <span class="required">(Required)</span></h6>
     {{ messages['subject'] }}
     <br>
-    {{ form.subject.label }} <span class="required">(Required)</span>
-    <br>
-    {{ form.subject }}
+    {{ form.subject(size=40) }}
     <br><br>
+    <h6>{{ form.message.label }} <span class="required">(Required)</span></h6>
     {{ messages['message'] }}
-    <br>
-    {{ form.message.label }} <span class="required">(Required)</span>
     <br>
     {{ form.message }}
     <br>
-    <button type="submit">Send</button>
+    <button type="submit" class="submit">Send</button>
 </form>
+
+{% endblock %}

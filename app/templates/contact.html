@@ -1,0 +1,31 @@
+<form action="" method="post">
+    <h1>Contact Form</h1>
+    <hr>
+    <p>Fill in this form to contact the site owners.</p>
+    {{ form.csrf_token }}
+    {{ messages['name'] }} 
+    <br>
+    {{ form.name.label }} <span class="required">(Required)</span>
+    <br>
+    {{ form.name(size=20) }}
+    <br><br>
+    {{ messages['email'] }}
+    <br>
+    {{ form.email.label }} <span class="required">(Required)</span>
+    <br>
+    {{ form.email }}
+    <br><br>
+    {{ messages['subject'] }}
+    <br>
+    {{ form.subject.label }} <span class="required">(Required)</span>
+    <br>
+    {{ form.subject }}
+    <br><br>
+    {{ messages['message'] }}
+    <br>
+    {{ form.message.label }} <span class="required">(Required)</span>
+    <br>
+    {{ form.message }}
+    <br>
+    <button type="submit">Send</button>
+</form>
